@@ -1,18 +1,20 @@
+import React from 'react'
 import dva from 'dva'
-import createHistory from 'history/createBrowserHistory'
-import { Router, Route } from 'dva/router'
+import { createBrowserHistory } from 'history'
+import { Router, Route, Switch, Redirect } from 'dva/router'
 
 const app = dva({
-    history: createHistory(),
+    history: createBrowserHistory(),
 })
 
-// app.router(
-//     history => (
-//         <Router history={history}>
-//             <Route path="/" component={<div>fawewfw</div>}></Route>
-//             <Route path="/home" component={() => <div>hahahha</div>} />
-//         </Router>
-//     )
-// )
+app.router(
+    ({ history }) => (
+        <Router history={history}>
+            <Switch>
+                <Route path="/home" exact component={() => <div>hahahha</div>}></Route>
+            </Switch>
+        </Router>
+    )
+)
 
-app.start('app')
+app.start('#app')

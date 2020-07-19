@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "练习koa框架与nodejs",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "cd web && npm run dev"
   },
   "author": "xue",
   "license": "ISC",

@@ -1,0 +1,22 @@
+{
+  "name": "mykoa",
+  "version": "1.0.0",
+  "description": "练习koa框架与nodejs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "xue",
+  "license": "ISC",
+  "dependencies": {
+    "koa": "^2.13.0",
+    "koa-bodyparser": "^4.3.0",
+    "koa-json": "^2.0.2",
+    "koa-router": "^9.1.0",
+    "koa-static": "^5.0.0",
+    "koa-view": "^2.1.4",
+    "mongoose": "^5.9.24"
+  },
+  "devDependencies": {
+    "eslint": "^7.4.0"
+  }
+}

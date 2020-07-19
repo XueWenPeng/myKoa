@@ -11,7 +11,7 @@ module.exports = {
     devServer: {
         port: 8000,
         contentBase: path.join(__dirname, 'public'),
-        open: true,
+        open: false,
         // proxy: {
         //     "/api": 'http://localhost:3000',
         // },
@@ -22,15 +22,53 @@ module.exports = {
         rules: [
             {
                 test: /\.js|jsx$/,
-                use: 'babel-loader',
+                use: [{
+                    loader: 'babel-loader',
+                    options: {
+                        plugins: [
+                            [
+                                "react-css-modules",
+                                {
+                                    "generateScopedName": "[path][name]__[local]--[hash:base64:5]",
+                                    "filetypes": {
+                                        ".less": {
+                                            "syntax": "postcss-less"
+                                        }
+                                    }
+                                }
+                            ]
+                        ]
+                    }
+                }],
             },
             {
-                test: /\.css/,
-                use: ['style-loader', 'css-loader']
-            },
+                test: /\.css$/,
+                use: [
+                    'style-loader',
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            modules: {
+                                localIdentName: '[path][name]__[local]--[hash:base64:5]'
+                            }
+                        }
+                    }
+                ]
+              },
             {
                 test: /.less/,
-                use: ['css-loader', 'less-loader']
+                use: [
+                    'style-loader',
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            modules: {
+                                localIdentName: '[path][name]__[local]--[hash:base64:5]'
+                            }
+                        }
+                    },
+                    'less-loader'
+                ]
             }
         ]
     },

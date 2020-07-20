@@ -4,7 +4,8 @@ const bodyParser = require('koa-bodyparser')
 const json = require('koa-json')
 const mongoose = require('mongoose')
 const koaStatic = require('koa-static')
-const views = require(koa-views)
+const views = require('koa-view')
+const routeConfig = require('./controllers/index')
 
 const app = new Koa()
 
@@ -16,6 +17,9 @@ app.use(views(__dirname + '/views', {
     extension: 'ejs'
 }))
 
+router.get(/\/*/, async (ctx, next) => {
+    await ctx.render('index')
+})
 
 app.use(router.routes(), router.allowedMethods())
 
